@@ -1,0 +1,51 @@
+<html>
+	<script type="text/javascript">
+		function addRowProduct(tableID) {
+			var table = document.getElementById(tableID);
+			var rowCount = table.rows.length;
+			var row = table.insertRow(rowCount);
+			row.className = "tabletr";
+			var cell1 = row.insertCell(0);
+			//set the dimensions for cell
+			cell1.width = "115";
+			cell1.height = "47";
+			cell1.align = "center";
+			//create element in cell
+			var element1 = document.createElement("input");
+			element1.type = "text";
+			element1.id = "ContentPlaceHolder1_txtQuantity" + rowCount;
+			element1.name = "ctl00$ContentPlaceHolder1$txtQuantity" + rowCount;
+			element1.className = "textbox1";
+			cell1.appendChild(element1);
+		}
+		function deleteRow(tableID) {
+			try {
+				var table = document.getElementById(tableID);
+				var rowCount = table.rows.length;
+				table.deleteRow(rowCount-1);
+			}
+			catch (e) {
+				$('#status').innerHTML = "Unavailable";
+			}
+		}
+	</script>			
+
+<body>
+	<table id="tblproducts" width="722" cellspacing="0" cellpadding="0" border="0" style="margin-top: 0px;">
+		<tr>
+			<th>
+				Quantity
+			</th>
+		</tr>
+		<tr class="tabletr">
+			<td width="115" height="47" align="center">
+				<input type="text" id="txtQuantity1" name="txtQuantity1" runat="server" class="textbox1" />
+			</td>
+		</tr>
+	</table>
+	<input type="button" class="row" value="Add Row" onclick="addRowProduct('tblproducts')"
+	style="width: 110px;" />
+	<input type="button" class="row" value="Delete Row" onclick="deleteRow('tblproducts')"
+	style="width: 110px;" />
+</body>
+</html>
