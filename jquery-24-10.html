@@ -1,0 +1,20 @@
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script type="text/javascript">
+// Disabling the "first-name" input box
+input.disable();
+(function ($) {
+   $.fn.disable = function () {
+       return $(this).each(function () { 
+            $(this).attr('disabled', 'disabled'); 
+       });
+    };
+</script>
+
+<body>
+<form id='form1'>
+	<input type="text" name="txtname" id="txtname" disabled="disabled">	
+</form>
+</body>
+</html>
