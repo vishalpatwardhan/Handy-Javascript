@@ -1,0 +1,61 @@
+<html>
+<head>
+<script type="text/javascript">
+function Animal(name) {
+  this.name = name
+this.run = function() {
+    alert("running "+this.name)
+  }
+}
+function Rabbit(name) {
+  Animal.apply(this, arguments) // inherit
+  this.bounce = function() {
+    alert("bouncing "+this.name)
+  }
+}
+function RunAnimal()
+{
+var animal = new Animal('Foxie')
+animal.run()
+}
+function RunRabbit()
+{
+rabbit = new Rabbit("Rab")
+rabbit.bounce() // own method
+rabbit.run()    // inherited method
+}
+
+function CustomRabbit(name) {
+Animal.call(this, "Mr. " + name.toUpperCase())
+}
+
+function RunCustomRabbit()
+{
+rabbit = new CustomRabbit("Rab")
+rabbit.run()
+}
+
+function RabbitPolymorphism(name) {
+Animal.apply(this, arguments) 
+  var parentRun = this.run  // keep parent method
+  this.run = function() {  
+    alert("bouncing "+this.name)
+parentRun.apply(this)  // call parent method
+  }
+}
+
+function RunPolymorphism()
+{
+rabbit = new RabbitPolymorphism("Rab")
+rabbit.run()    // inherited method
+}
+</script>
+</head>
+<body>
+<input type="button" onclick="RunAnimal();" value="RunAnimal"/>
+<input type="button" onclick="RunRabbit();" value="RunRabbit"/>
+<input type="button" onclick="RunCustomRabbit();" value="RunCustomRabbit"/>
+<input type="button" onclick="RunPolymorphism();" value="RabbitPolymorphism"/>
+</body>
+</html>
+

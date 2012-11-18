@@ -1,0 +1,28 @@
+<html>
+<head>
+<script type="text/javascript">
+function Car( model ) {
+  this.model = model;
+  this.color = "silver";
+  this.year  = "2012";
+  this.getInfo = function () {
+    return this.model + " " + this.year;
+  };
+}
+
+function Run()
+{
+var myCar = new Car("ford");
+myCar.year = "2010";
+alert( myCar.getInfo() );
+}
+// and then open our browser console to view the
+// output of the toString() method being called on
+// these objects
+</script>
+</head>
+<body>
+<input type="button" onclick="Run();" value="Run"/>
+</body>
+</html>
+

@@ -1,0 +1,26 @@
+<html>
+<head>
+<script type="text/javascript">
+function SetValues(obj,Key,Value)
+{
+Object.defineProperty(obj,Key, {
+    value: Value,
+    writable: true,
+    enumerable: true,
+    configurable: true
+});
+}
+function Run()
+{
+var person={};
+SetValues( person, "car",  "Delorean" );
+SetValues( person, "dateOfBirth", "1981" );
+alert(person.car);
+}
+</script>
+</head>
+<body>
+<input type="button" onclick="Run();" value="Run"/>
+</body>
+</html>
+
